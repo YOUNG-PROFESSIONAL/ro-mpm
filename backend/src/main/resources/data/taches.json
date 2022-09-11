@@ -1,0 +1,86 @@
+[
+    {
+        "tacheId": "1",
+        "tacheInfo": "A",
+        "tacheDuree": "8",
+        "tachePrecedant": null,
+        "tacheSuivant": [""]
+    },
+    {
+        "tacheId": "2",
+        "tacheInfo": "B",
+        "tacheDuree": "12",
+        "tachePrecedant": ["A"],
+        "tacheSuivant": [""]
+    },
+    {
+        "tacheId": "3",
+        "tacheInfo": "C",
+        "tacheDuree": "4",
+        "tachePrecedant": ["B"],
+        "tacheSuivant": [""]
+    },
+    {
+        "tacheId": "4",
+        "tacheInfo": "D",
+        "tacheDuree": "8",
+        "tachePrecedant": ["B"],
+        "tacheSuivant": [""]
+    },
+    {
+        "tacheId": "4",
+        "tacheInfo": "E",
+        "tacheDuree": "4",
+        "tachePrecedant": ["B"],
+        "tacheSuivant": [""]
+    },
+    {
+        "tacheId": "5",
+        "tacheInfo": "F",
+        "tacheDuree": "8",
+        "tachePrecedant": ["B"],
+        "tacheSuivant": [""]
+    },
+    {
+        "tacheId": "6",
+        "tacheInfo": "G",
+        "tacheDuree": "24",
+        "tachePrecedant": ["C","D"],
+        "tacheSuivant": [""]
+    },
+    {
+        "tacheId": "7",
+        "tacheInfo": "H",
+        "tacheDuree": "20",
+        "tachePrecedant": ["E","F","G"],
+        "tacheSuivant": [""]
+    },
+    {
+        "tacheId": "8",
+        "tacheInfo": "I",
+        "tacheDuree": "12",
+        "tachePrecedant": ["C","D"],
+        "tacheSuivant": [""]
+    },
+    {
+        "tacheId": "9",
+        "tacheInfo": "J",
+        "tacheDuree": "16",
+        "tachePrecedant": ["E","F","G"],
+        "tacheSuivant": [""]
+    },
+    {
+        "tacheId": "10",
+        "tacheInfo": "K",
+        "tacheDuree": "32",
+        "tachePrecedant": ["I","H","J"],
+        "tacheSuivant": null
+    },
+    {
+        "tacheId": "11",
+        "tacheInfo": "L",
+        "tacheDuree": "36",
+        "tachePrecedant": ["I","H","J"],
+        "tacheSuivant": null
+    }
+]
