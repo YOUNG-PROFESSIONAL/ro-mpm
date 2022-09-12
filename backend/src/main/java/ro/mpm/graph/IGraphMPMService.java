@@ -2,7 +2,6 @@ package ro.mpm.graph;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 import org.springframework.stereotype.Service;
 
@@ -23,7 +22,7 @@ public class IGraphMPMService implements GraphMPMService {
         path = new ArrayList<Tache>();
         path.clear();
 
-        System.out.println("Source : " + src.getLabel() + " Destination : " + dst.getLabel());
+       // System.out.println("Source : " + src.getLabel() + " Destination : " + dst.getLabel());
 
         path.add(src);
 
@@ -61,7 +60,6 @@ public class IGraphMPMService implements GraphMPMService {
         
         graphMPM = graph;
         
-        System.out.println("\n ------+++++++++++++++++++-------");
         depthFirstTraversal(graph);
            
         
@@ -107,7 +105,6 @@ public class IGraphMPMService implements GraphMPMService {
                         taches.get(j).setDateAuPlutot(duree);  
                 }
             }
-            System.out.println();
         }
 
         return graphMPM;
@@ -137,9 +134,6 @@ public class IGraphMPMService implements GraphMPMService {
                         for(Tache tache : taches){
                             tache.setCheminCritique(true);
                         }
-
-                System.out.println();
-        
             }
         return graphMPM;
     }
@@ -151,7 +145,6 @@ public class IGraphMPMService implements GraphMPMService {
         for(List<Tache> taches : paths){
             i = taches.size()-1;
             for (; true; i--) {
-                System.out.println("i : " + i);
                 if(taches.get(i).getDateAuPlutard() != null){
                     if(taches.get(i).getDateAuPlutard() >= duree){
                         taches.get(i).setDateAuPlutard(duree);
@@ -165,14 +158,11 @@ public class IGraphMPMService implements GraphMPMService {
                 }
                 else{
                     duree = duree - taches.get(i).getDuree();
-                    System.out.println("Duree : " + duree);
                     taches.get(i).setDateAuPlutard(duree);
-                    System.out.println("Tache : " + taches.get(i).getLabel());
                 }
                     
                 if(i == 0) break;
             }
-            System.out.println();
         }
 
         return graphMPM;

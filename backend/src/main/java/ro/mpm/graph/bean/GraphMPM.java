@@ -64,9 +64,8 @@ public class GraphMPM {
                             }
                         }
                     if(i<=0){
-                        System.out.println(v2.getTacheS());
                         v1.setTacheA(v2.getLabel());
-                        v2.setTacheS(v1.getLabel());
+                        if(!v2.getTacheS().contains("fin"))v2.setTacheS(v1.getLabel());
                         addEdge(v2, v1);
                     }
                     }
@@ -80,7 +79,11 @@ public class GraphMPM {
                         for (int i = 0; i < v2.getTacheA().length(); i++) {
                             if(v2.getTacheA().charAt(i) == v1.getLabel().charAt(0)){
                                 if(v1.getTacheS() == null || v1.getTacheS().length()<=0) v1.setTacheS(v2.getLabel());
-                                else v1.setTacheS(v1.getTacheS() + "," + v2.getLabel());
+                                else {
+                                        if(!v2.getLabel().contentEquals("fin"))
+                                            v1.setTacheS(v1.getTacheS() + "," + v2.getLabel());
+                                }
+
                                 addEdge(v1, v2);
                             }
                         }
