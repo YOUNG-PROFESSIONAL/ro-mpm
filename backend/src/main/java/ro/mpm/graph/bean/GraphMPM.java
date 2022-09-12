@@ -64,6 +64,7 @@ public class GraphMPM {
                             }
                         }
                     if(i<=0){
+                        System.out.println(v2.getTacheS());
                         v1.setTacheA(v2.getLabel());
                         v2.setTacheS(v1.getLabel());
                         addEdge(v2, v1);

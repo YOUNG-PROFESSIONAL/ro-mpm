@@ -6,6 +6,7 @@ public class Tache {
     private String tacheA;
     private String tacheS;
     private Integer dateAuPlutot;
+    private boolean cheminCritique;
     private Integer dateAuPlutard;
 
     public Tache(){
@@ -32,21 +33,6 @@ public class Tache {
         this.tacheA = tacheA;
         this.tacheS = tacheS;
     }
-
-  
-    /********************Date ou Plutot***********************/
-    public int dateAuPlutot(){
-        return duree;
-    }
-    /********************Chemin Critique**********************/
-    public int cheminCritique(){
-        return duree ;
-    }
-    /********************Date au plutard**********************/
-    public int dateAuPlutard(){
-        return duree;
-    }
-    /********************Marge de Retard***********************/
 
     public String getLabel() {
         return label;
@@ -92,6 +78,11 @@ public class Tache {
     public void setDateAuPlutard(Integer dateAuPlutard) {
         this.dateAuPlutard = dateAuPlutard;
     }
-    
+    public boolean isCheminCritique() {
+        return cheminCritique;
+    }
+    public void setCheminCritique(boolean cheminCritique) {
+        this.cheminCritique = cheminCritique;
+    }
 
 }

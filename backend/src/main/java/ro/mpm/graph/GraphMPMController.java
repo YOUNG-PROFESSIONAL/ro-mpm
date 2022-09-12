@@ -28,12 +28,32 @@ public class GraphMPMController {
         );
     }
 
-    @GetMapping()
-    public ResponseEntity<Response> getGraph(@RequestBody List<Tache> taches){
+    @GetMapping("/date-au-plutot")
+    public ResponseEntity<Response> getGraphDateAuPlutot(){
 
         return ResponseEntity.ok(
                 Response.builder()
-                        .data(Map.of("graph",graphMPMService.createGraphMPM(taches)))
+                        .data(Map.of("graph",graphMPMService.dateAuPlutot()))
+                        .build()
+        );
+    }
+
+    @GetMapping("/chemin-critique")
+    public ResponseEntity<Response> getGraphCheminCritique(){
+
+        return ResponseEntity.ok(
+                Response.builder()
+                        .data(Map.of("graph",graphMPMService.cheminCritique()))
+                        .build()
+        );
+    }
+
+    @GetMapping("/date-au-plutard")
+    public ResponseEntity<Response> getGraphDateAuPlutard(){
+
+        return ResponseEntity.ok(
+                Response.builder()
+                        .data(Map.of("graph",graphMPMService.dateAuPlutard()))
                         .build()
         );
     }
