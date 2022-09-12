@@ -87,28 +87,27 @@ public class IGraphMPMService implements GraphMPMService {
 
     @Override
     public GraphMPM dateAuPlutot() {
-         List<Tache> pathTot= new ArrayList<>(){};
-         List<List<Tache>> pathsTot = new ArrayList<List<Tache>>(){};
-
+        int i = 0;
         int duree = 0;
-        for(List<Tache> path: paths ){
-            
-            for(Tache tache : path){
-               duree = duree + tache.getDuree();
-               if(tache.getDateAuPlutot() != null){
-                    if(tache.getDateAuPlutot() <= duree){
-                        tache.setDateAuPlutot(duree);
-                    }
-               }
-               else tache.setDateAuPlutot(duree);
-               pathTot.add(tache);
-
-               if(tache.getLabel().contentEquals("fin")){
-                pathsTot.add(pathTot);
-                pathTot = new ArrayList<>(){};
-                    duree = 0;
-               }
+        for(List<Tache> taches : paths){
+            i = taches.size();
+            for (int j=0; j<i; j++) {
+                if(taches.get(j).getLabel().contentEquals("deb")){
+                    duree=0;
+                    taches.get(j).setDateAuPlutot(duree);
+                }
+                else{
+                    duree = duree + taches.get(j-1).getDuree();
+                    if(taches.get(j).getDateAuPlutot() != null){
+                        if(taches.get(j).getDateAuPlutot() <= duree){
+                            taches.get(j).setDateAuPlutot(duree);
+                        }
+                   }
+                   else
+                        taches.get(j).setDateAuPlutot(duree);  
+                }
             }
+            System.out.println();
         }
 
         return graphMPM;
@@ -120,29 +119,62 @@ public class IGraphMPMService implements GraphMPMService {
         int duree = 0;
         int fin = 0;
         int test = 0;
+        int i = 0;
             for(List<Tache> taches : paths){
-                for(Tache tache : taches){
-                   duree = duree + tache.getDuree();
-                   if(tache.getLabel().contentEquals("fin")){
-                        fin = tache.getDateAuPlutot();
-                        test = duree;
+                i = taches.size();
+                for(int j=0; j<i; j++){
+                    if(taches.get(j).getLabel().contentEquals("deb"))
                         duree = 0;
+                    else
+                        duree = duree + taches.get(j-1).getDuree();
+                   
+                   if(taches.get(j).getLabel().contentEquals("fin")){
+                        fin = taches.get(j).getDateAuPlutot();
+                        test = duree;
                    }
-                       
                 }
-                if(test == fin )
-                    for(Tache tache : taches){
-                        tache.setCheminCritique(true);
-                    }
+                    if(test == fin )
+                        for(Tache tache : taches){
+                            tache.setCheminCritique(true);
+                        }
 
                 System.out.println();
+        
             }
         return graphMPM;
     }
 
     @Override
     public GraphMPM dateAuPlutard() {
-        // TODO Auto-generated method stub
+        int i = 0;
+        int duree = 0;
+        for(List<Tache> taches : paths){
+            i = taches.size()-1;
+            for (; true; i--) {
+                System.out.println("i : " + i);
+                if(taches.get(i).getDateAuPlutard() != null){
+                    if(taches.get(i).getDateAuPlutard() >= duree){
+                        taches.get(i).setDateAuPlutard(duree);
+                    }
+               }
+                
+                if(taches.get(i).getLabel().contentEquals("fin")){
+                    duree = taches.get(i).getDateAuPlutot();
+                    taches.get(i).setDateAuPlutard(duree);
+                   
+                }
+                else{
+                    duree = duree - taches.get(i).getDuree();
+                    System.out.println("Duree : " + duree);
+                    taches.get(i).setDateAuPlutard(duree);
+                    System.out.println("Tache : " + taches.get(i).getLabel());
+                }
+                    
+                if(i == 0) break;
+            }
+            System.out.println();
+        }
+
         return graphMPM;
     }
     
