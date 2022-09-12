@@ -57,4 +57,14 @@ public class GraphMPMController {
                         .build()
         );
     }
+
+    @GetMapping("/marge-tard")
+    public ResponseEntity<Response> getGraphMargeTard(){
+
+        return ResponseEntity.ok(
+                Response.builder()
+                        .data(Map.of("graph",graphMPMService.margeDeRetard()))
+                        .build()
+        );
+    }
 }

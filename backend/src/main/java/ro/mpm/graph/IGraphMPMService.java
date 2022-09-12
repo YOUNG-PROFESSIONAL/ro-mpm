@@ -177,6 +177,15 @@ public class IGraphMPMService implements GraphMPMService {
 
         return graphMPM;
     }
+
+    @Override
+    public GraphMPM margeDeRetard() {
+        for(List<Tache> taches : paths){
+            for(Tache tache : taches)
+                tache.setMarge(tache.getDateAuPlutard(), tache.getDateAuPlutot());
+        }
+        return graphMPM;
+    }
     
  
 }

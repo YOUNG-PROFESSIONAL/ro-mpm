@@ -10,5 +10,6 @@ public interface GraphMPMService {
     public GraphMPM dateAuPlutot();
     public GraphMPM cheminCritique();
     public GraphMPM dateAuPlutard();
+    public GraphMPM margeDeRetard();
         
 }

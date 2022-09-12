@@ -8,6 +8,7 @@ public class Tache {
     private Integer dateAuPlutot;
     private boolean cheminCritique;
     private Integer dateAuPlutard;
+    private Integer marge;
 
     public Tache(){
         this.label = "";
@@ -84,5 +85,14 @@ public class Tache {
     public void setCheminCritique(boolean cheminCritique) {
         this.cheminCritique = cheminCritique;
     }
+    public Integer getMarge() {
+        return marge;
+    }
+    public void setMarge(Integer dateAuPlutard,Integer dateAuPlutot) {
+        if(dateAuPlutard != null && dateAuPlutot!= null)
+            this.marge = dateAuPlutard - dateAuPlutot;
+    }
+
+    
 
 }
