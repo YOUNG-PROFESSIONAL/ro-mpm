@@ -32,14 +32,14 @@ public class IGraphMPMService implements GraphMPMService {
     public void DFS (GraphMPM graph, Tache src , Tache dst, List<Tache> path) {
 
         if (src == dst) {
-            //System.out.print("\nPath : " );
+          //  System.out.print("\nPath : " );
             for (Tache node : path){
                 path2.add(node);
                 if(node.getLabel().contentEquals("fin")){
                    paths.add(path2);
                    path2 = new ArrayList<>(){};
                 }
-                //System.out.print(node.getLabel() + " - ");
+              //  System.out.print(node.getLabel() + " - ");
             }
                  
         } else {
@@ -61,7 +61,10 @@ public class IGraphMPMService implements GraphMPMService {
         graphMPM = graph;
         
         depthFirstTraversal(graph);
-           
+        dateAuPlutot();
+        cheminCritique();
+        dateAuPlutard();
+        margeDeRetard();
         
         return graph;
     }
@@ -141,29 +144,31 @@ public class IGraphMPMService implements GraphMPMService {
     @Override
     public GraphMPM dateAuPlutard() {
         int i = 0;
-        int duree = 0;
+        int dateTard = 0;
         for(List<Tache> taches : paths){
             i = taches.size()-1;
-            for (; true; i--) {
-                if(taches.get(i).getDateAuPlutard() != null){
-                    if(taches.get(i).getDateAuPlutard() >= duree){
-                        taches.get(i).setDateAuPlutard(duree);
-                    }
-               }
-                
-                if(taches.get(i).getLabel().contentEquals("fin")){
-                    duree = taches.get(i).getDateAuPlutot();
-                    taches.get(i).setDateAuPlutard(duree);
-                   
+            for (Tache tache : taches) {
+                if(tache.getLabel().contentEquals("fin")){
+                    dateTard = tache.getDateAuPlutot();
+                    tache.setDateAuPlutard(dateTard);
+                    break;
                 }
-                else{
-                    duree = duree - taches.get(i).getDuree();
-                    taches.get(i).setDateAuPlutard(duree);
-                }
-                    
-                if(i == 0) break;
             }
+            
+            for (;true;i--) {
+                dateTard = dateTard - taches.get(i).getDuree();
+                    if(taches.get(i).getDateAuPlutard() == null){
+                        taches.get(i).setDateAuPlutard(dateTard);    
+                    }
+                    if(taches.get(i).getDateAuPlutard() != null){ // si date au plutard diff null
+                        if(taches.get(i).getDateAuPlutard() >=dateTard){
+                            taches.get(i).setDateAuPlutard(dateTard);
+                        }
+                   }
+                   if(i == 0) break;
+                }            
         }
+        
 
         return graphMPM;
     }
@@ -171,8 +176,11 @@ public class IGraphMPMService implements GraphMPMService {
     @Override
     public GraphMPM margeDeRetard() {
         for(List<Tache> taches : paths){
-            for(Tache tache : taches)
+            for(Tache tache : taches){
                 tache.setMarge(tache.getDateAuPlutard(), tache.getDateAuPlutot());
+                //System.out.print(tache.getLabel()+". "+tache.getDateAuPlutard() + "| ");
+            }
+           // System.out.println();
         }
         return graphMPM;
     }

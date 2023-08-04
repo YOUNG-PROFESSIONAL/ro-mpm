@@ -1,0 +1,6 @@
+{
+    "java.project.sourcePaths": [
+        "frontend/src/app/mpm-data/states"
+    ],
+    "java.configuration.updateBuildConfiguration": "interactive"
+}

@@ -13,6 +13,7 @@ public class GraphMPM {
         adjVertices = new HashMap<Tache, List<Tache>>();
     }
     public Map<Tache, List<Tache>> getAdjVertices() {
+       
         return adjVertices;
     }
 

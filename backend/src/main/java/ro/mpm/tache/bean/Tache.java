@@ -92,7 +92,10 @@ public class Tache {
         if(dateAuPlutard != null && dateAuPlutot!= null)
             this.marge = dateAuPlutard - dateAuPlutot;
     }
-
-    
-
+    @Override
+    public String toString() {
+        return "{\"cheminCritique\":\"" + cheminCritique + "\", \"dateAuPlutard\":\"" + dateAuPlutard + "\", \"dateAuPlutot\":\""
+                + dateAuPlutot + "\", \"duree\":\"" + duree + "\", \"label\":\"" + label + "\", \"marge\":\"" + marge + "\", \"tacheA\":\"" + tacheA
+                + "\", \"tacheS\":\"" + tacheS + "\"}";
+    }
 }
